@@ -35,7 +35,7 @@ Nummer 001 / 2011 vom 01.01.2011 bis 05.01.2011
 
 #### Example 2: "Abrechnung:         Januar 2011"
 
-To identify everythin after the word "Abrechnung", until the date field in the format "yyyy", e.g.
+To identify everything after the word "Abrechnung", until the date field in the format "yyyy", e.g.
 ```
 Abrechnung:         Januar 2011
 ```
