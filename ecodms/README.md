@@ -6,7 +6,7 @@ My requirements were the following:
 - I wanted a input folder where I can put the electronically available PDF documents and the scanned paper documents and afterwards these are processed automatically with minimal manual effort 
 - Scanned PDFs get OCR'ed to PDF/A automatically (for fulltext index)
 - Fulltext search on the context
-- I was looking for an affordable system, since I only use it for a private purpose
+- I was looking for an affordable system, since I only use it for private purpose only
 
 The key features of ecodms I coudld not find in any other open source or affordable document management system were the possibility to automate the process of classification of the document based on keyword searches and automatic extraction of a certain text from the document with the help of regular expressions.
 
