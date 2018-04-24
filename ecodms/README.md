@@ -19,7 +19,7 @@ to be done
 ### Identify everything after a certain word
 #### Example 1: "Kontoauszug Nummer 001 / 2011 vom 01.01.2011 bis 05.01.2011"
 
-To identify everythin after the word "Kontoauszug", until the date field in the format "dd.mm.yyyy", e.g.
+To identify everything after the word "Kontoauszug", until the date field in the format "dd.mm.yyyy", e.g.
 ```
 Kontoauszug Nummer 001 / 2011 vom 01.01.2011 bis 05.01.2011
 ```
