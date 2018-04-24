@@ -58,6 +58,5 @@ If the docker service ist started on the Synology disk station it does not switc
 But I wanted to have a regular daily backup of all data, therefore I created the [ecodms/backup.sh](backup.sh) and set up a scheduled task that runs once a day. See https://www.synology.com/en-global/knowledgebase/DSM/help/DSM/AdminCenter/system_taskscheduler for details on setting up a scheduled task on synology.
 Make sure you enter add the shell interpreter (/bin/sh ) before the full path name to the script:
 
-```
-/bin/sh /volume1/the_path_you_have_saved_the_script_on_your_synology/backup.sh
-```
+![Scheduled task screenshot](img/scheduled_task1.png)
+
