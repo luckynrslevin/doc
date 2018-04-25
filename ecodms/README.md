@@ -12,7 +12,30 @@ The key features of ecodms I coudld not find in any other open source or afforda
 
 
 ## Installation
-to be done
+Follow the installation instructions for Synology NAS in CHapter 4.4 of the ecodms installation guide:
+https://www.ecodms.de/index.php/de/download/handbuecher/ecodms-version-16-09-eleanor
+
+## My ecodms configuration
+
+### classification attributes
+I tried to keep the classification attributes as generic as possible, to be able to use it for all kind of document types.
+I use "From" (German: Von) to identify the origin/sender of the document. E.g. if it is a bank statement I put in the name of the bank, if it is a product manual I use it to put in the name of the manufacturer, .... To avoid missspelling I use combobox type.
+For Invoices I added the field Invoicenumber (German: Rechnungsnummer) with type textfield and in addition a combobox field the number of years of guarantee (German: Garantie).
+
+Name | Type | Combobox values
+------------ | ------------- | -------------
+Von | Combobox | Yamaha, Thorens, Brother, Apple, Vespa
+Rechnungsnummer | Freitext
+Garantie | Combobox | 1 Jahr, 2 Jahre, 3 Jahre, 4 Jahre, 5 Jahre
+
+### document types
+Type | Icon
+------------ | -------------
+Anleitung |   
+Rechnung |
+Kontoauszug |
+Kreditkartenabrechnung |
+
 
 ## REGEX functions I am using
 
