@@ -31,10 +31,10 @@ Garantie | Combobox | 1 Jahr, 2 Jahre, 3 Jahre, 4 Jahre, 5 Jahre
 ### document types
 Type | Icon
 ------------ | -------------
-Anleitung |   
-Rechnung |
-Kontoauszug |
-Kreditkartenabrechnung |
+Anleitung | ![Anleitung](icon/Anleitung.png)
+Rechnung | ![Rechnung](icon/Rechnung.png)
+Kontoauszug | ![Kontoauszug](icon/Kontoauszug.png)
+Kreditkartenabrechnung | ![Kreditkartenabrechnung](icon/Kreditkartenabrechnung.png)
 
 
 ## REGEX functions I am using
