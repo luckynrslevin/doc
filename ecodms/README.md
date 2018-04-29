@@ -1,5 +1,20 @@
 # ecodms Document Management System on Synology NAS
 
+Table of Contents
+=================
+
+   * [ecodms Document Management System on Synology NAS]()
+      * [Why did I choose ecodms]()
+      * [Installation]()
+      * [My ecodms configuration]()
+         * [classification attributes]()
+         * [document types]()
+      * [REGEX functions I am using]()
+         * [Identify everything after a certain word]()
+            * [Example 1: "Kontoauszug Nummer 001 / 2011 vom 01.01.2011 bis 05.01.2011"]()
+            * [Example 2: "Abrechnung:         Januar 2011"]()
+      * [create scheduled task for backup]()
+
 ## Why did I choose ecodms
 My requirements were the following:
 - My input documents are electronic PDFs and real paper that is scanned and saved to a folder
