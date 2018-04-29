@@ -1,21 +1,8 @@
-# ecodms Document Management System on Synology NAS
+ecodms Document Management System on Synology NAS
+=================================================
 
-Table of Contents
-=================
-
-   * [ecodms Document Management System on Synology NAS]()
-      * [Why did I choose ecodms]()
-      * [Installation]()
-      * [My ecodms configuration]()
-         * [classification attributes]()
-         * [document types]()
-      * [REGEX functions I am using]()
-         * [Identify everything after a certain word]()
-            * [Example 1: "Kontoauszug Nummer 001 / 2011 vom 01.01.2011 bis 05.01.2011"]()
-            * [Example 2: "Abrechnung:         Januar 2011"]()
-      * [create scheduled task for backup]()
-
-## Why did I choose ecodms
+Why did I choose ecodms
+-----------------------
 My requirements were the following:
 - My input documents are electronic PDFs and real paper that is scanned and saved to a folder
 - I wanted a input folder where I can put the electronically available PDF documents and the scanned paper documents and afterwards these are processed automatically with minimal manual effort 
@@ -26,11 +13,13 @@ My requirements were the following:
 The key features of ecodms I coudld not find in any other open source or affordable document management system were the possibility to automate the process of classification of the document based on keyword searches and automatic extraction of a certain text from the document with the help of regular expressions.
 
 
-## Installation
+Installation
+------------
 Follow the installation instructions for Synology NAS in CHapter 4.4 of the ecodms installation guide:
 https://www.ecodms.de/index.php/de/download/handbuecher/ecodms-version-16-09-eleanor
 
-## My ecodms configuration
+My ecodms configuration
+-----------------------
 
 ### classification attributes
 I tried to keep the classification attributes as generic as possible, to be able to use it for all kind of document types.
@@ -52,7 +41,8 @@ Kontoauszug | ![Kontoauszug](icon/Kontoauszug.png)
 Kreditkartenabrechnung | ![Kreditkartenabrechnung](icon/Kreditkartenabrechnung.png)
 
 
-## REGEX functions I am using
+REGEX functions I am using
+--------------------------
 
 ### Identify everything after a certain word
 #### Example 1: "Kontoauszug Nummer 001 / 2011 vom 01.01.2011 bis 05.01.2011"
@@ -90,7 +80,9 @@ which results in:
 Unfortunately I did not find a way to eliminate the ":" in the result. Any hint is apreciated.
 
 
-## create scheduled task for backup
+create scheduled task for backup
+--------------------------------
+
 If the docker service is started on the Synology disk station it does not switch to standby any more and therefore I only start it on purpose, if I need to archive documents or search for documents.
 
 But I wanted to have a regular daily backup of all data, therefore I created the [ecodms/backup.sh](backup.sh) and set up a scheduled task that runs once a day. See https://www.synology.com/en-global/knowledgebase/DSM/help/DSM/AdminCenter/system_taskscheduler for details on setting up a scheduled task on synology.
