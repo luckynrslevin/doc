@@ -36,7 +36,20 @@ https://www.ecodms.de/index.php/de/download/handbuecher/ecodms-version-16-09-ele
 My ecodms configuration
 -----------------------
 
-### classification attributes
+### Users
+
+Change the default password of the ecodms user, that also has administration privileges.
+
+To create a user that is able to scan, classify and version documents, see the version history and use the web interface, the following roles are required:
+- ecoSIMSCLASSIFY
+- ecoICELogon
+- ecoSIMSVERSIONING
+- ecoSIMSHISTORY
+- ecoSIMSWEBCLIENT
+
+### Folders
+
+### Classification attributes
 I tried to keep the classification attributes as generic as possible, to be able to use it for all kind of document types.
 I use "From" (German: Von) to identify the origin/sender of the document. E.g. if it is a bank statement I put in the name of the bank, if it is a product manual I use it to put in the name of the manufacturer, .... To avoid missspelling I use combobox type.
 For Invoices I added the field Invoicenumber (German: Rechnungsnummer) with type textfield and in addition a combobox field the number of years of guarantee (German: Garantie).
@@ -47,7 +60,7 @@ Von | Combobox | Yamaha, Thorens, Brother, Apple, Vespa
 Rechnungsnummer | Freitext
 Garantie | Combobox | 1 Jahr, 2 Jahre, 3 Jahre, 4 Jahre, 5 Jahre
 
-### document types
+### Document types
 Type | Icon
 ------------ | -------------
 Anleitung | ![Anleitung](icon/Anleitung.png)
@@ -95,7 +108,7 @@ which results in:
 Unfortunately I did not find a way to eliminate the ":" in the result. Any hint is apreciated.
 
 
-create scheduled task for backup
+Create scheduled task for backup
 --------------------------------
 
 If the docker service is started on the Synology disk station it does not switch to standby any more and therefore I only start it on purpose, if I need to archive documents or search for documents.
