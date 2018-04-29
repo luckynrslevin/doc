@@ -1,6 +1,21 @@
 ecodms Document Management System on Synology NAS
 =================================================
 
+Table of Contents
+=================
+
+   * [ecodms Document Management System on Synology NAS](#ecodms-document-management-system-on-synology-nas)
+      * [Why did I choose ecodms](#why-did-i-choose-ecodms)
+      * [Installation](#installation)
+      * [My ecodms configuration](#my-ecodms-configuration)
+         * [classification attributes](#classification-attributes)
+         * [document types](#document-types)
+      * [REGEX functions I am using](#regex-functions-i-am-using)
+         * [Identify everything after a certain word](#identify-everything-after-a-certain-word)
+            * [Example 1: "Kontoauszug Nummer 001 / 2011 vom 01.01.2011 bis 05.01.2011"](#example-1-kontoauszug-nummer-001--2011-vom-01012011-bis-05012011)
+            * [Example 2: "Abrechnung:         Januar 2011"](#example-2-abrechnung---------januar-2011)
+      * [create scheduled task for backup](#create-scheduled-task-for-backup)
+
 Why did I choose ecodms
 -----------------------
 My requirements were the following:
