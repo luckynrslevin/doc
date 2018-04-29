@@ -16,6 +16,8 @@ Table of Contents
             * [Example 2: "Abrechnung:         Januar 2011"](#example-2-abrechnung---------januar-2011)
       * [create scheduled task for backup](#create-scheduled-task-for-backup)
 
+
+
 Why did I choose ecodms
 -----------------------
 My requirements were the following:
@@ -38,7 +40,7 @@ My ecodms configuration
 
 ### Users
 
-Change the default password of the ecodms user, that also has administration privileges.
+Change the default password of the `ecodms` user, that also has administration privileges.
 
 To create a user that is able to scan, classify and version documents, see the version history and use the web interface, the following roles are required:
 - ecoSIMSCLASSIFY
