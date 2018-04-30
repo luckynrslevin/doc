@@ -28,28 +28,34 @@ My requirements were the following:
 - I was looking for an affordable system, since I use it for private purpose only
 
 The key features of ecodms I coudld not find in any other open source or affordable document management system were the possibility to automate the process of classification of the document based on keyword searches and automatic extraction of a certain text from the document with the help of regular expressions.
-
+<p><br></p>
 
 Installation
 ------------
 Follow the installation instructions for Synology NAS in CHapter 4.4 of the ecodms installation guide:
 https://www.ecodms.de/index.php/de/download/handbuecher/ecodms-version-16-09-eleanor
+<p><br></p>
 
 My ecodms configuration
 -----------------------
 
 ### Users
 
-Change the default password of the `ecodms` user, that also has administration privileges.
+Change the default password of the admin user `ecoSIMSAdmin`.
+Change the default password of the user `ecodms`, that also has administration privileges.
 
 To create a user that is able to scan, classify and version documents, see the version history and use the web interface, the following roles are required:
-- ecoSIMSCLASSIFY
-- ecoICELogon
-- ecoSIMSVERSIONING
-- ecoSIMSHISTORY
-- ecoSIMSWEBCLIENT
+- ecoSIMSCLASSIFY - archive and classify documents
+- ecoICELogon - use the ecodms inbox
+- ecoSIMSVERSIONING - use the versioning module
+- ecoSIMSHISTORY - view document history
+- ecoSIMSWEBCLIENT - use the web client
+<p><br></p>
 
 ### Folders
+
+I only use one folder named `All` for all documents, since I need no detailed roles and rights concept and I use the classification module to sort and find documents.
+<p><br></p>
 
 ### Classification attributes
 I tried to keep the classification attributes as generic as possible, to be able to use it for all kind of document types.
@@ -61,15 +67,16 @@ Name | Type | Combobox values
 Von | Combobox | Yamaha, Thorens, Brother, Apple, Vespa
 Rechnungsnummer | Freitext
 Garantie | Combobox | 1 Jahr, 2 Jahre, 3 Jahre, 4 Jahre, 5 Jahre
+<p><br></p>
 
 ### Document types
 Type | Icon
 ------------ | -------------
-Anleitung | ![Anleitung](icon/Anleitung.png)
-Rechnung | ![Rechnung](icon/Rechnung.png)
-Kontoauszug | ![Kontoauszug](icon/Kontoauszug.png)
-Kreditkartenabrechnung | ![Kreditkartenabrechnung](icon/Kreditkartenabrechnung.png)
-
+Anleitung | <img src="icon/Anleitung.png" width="30">
+Rechnung | <img src="icon/Rechnung.png" width="30">
+Kontoauszug | <img src="icon/Kontoauszug.png" width="30">
+Kreditkartenabrechnung | <img src="icon/Kreditkartenabrechnung.png" width="30">
+<p><br></p>
 
 REGEX functions I am using
 --------------------------
@@ -91,6 +98,7 @@ which results in:
 ```
 Nummer 001 / 2011 vom 01.01.2011 bis 05.01.2011
 ```
+<p><br></p>
 
 #### Example 2: "Abrechnung:         Januar 2011"
 
@@ -108,7 +116,7 @@ which results in:
 : Januar 2015
 ```
 Unfortunately I did not find a way to eliminate the ":" in the result. Any hint is apreciated.
-
+<p><br></p>
 
 Create scheduled task for backup
 --------------------------------
@@ -119,4 +127,4 @@ But I wanted to have a regular daily backup of all data, therefore I created the
 Make sure you add the shell interpreter (/bin/sh ) before the full path name to the script:
 
 ![Scheduled task screenshot](img/scheduled_task1.png)
-
+<p><br></p>
