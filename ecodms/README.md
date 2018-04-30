@@ -70,12 +70,12 @@ Garantie | Combobox | 1 Jahr, 2 Jahre, 3 Jahre, 4 Jahre, 5 Jahre
 <p><br></p>
 
 ### Document types
-Type | Icon
------------- | -------------
-Anleitung | <img src="icon/Anleitung.png" width="30">
-Rechnung | <img src="icon/Rechnung.png" width="30">
-Kontoauszug | <img src="icon/Kontoauszug.png" width="30">
-Kreditkartenabrechnung | <img src="icon/Kreditkartenabrechnung.png" width="30">
+Type | Icon | Mandatory | Hide
+------------ | ------------- | ------------- | -------------
+Anleitung | <img src="icon/Anleitung.png" width="30"> | Dokumentenart, Von | Rechnungsnummer, Garantie
+Rechnung | <img src="icon/Rechnung.png" width="30"> | Dokumentenart, Von, Rechnungsnummer | 
+Kontoauszug | <img src="icon/Kontoauszug.png" width="30"> | Dokumentenart, Von | Rechnungsnummer, Garantie
+Kreditkartenabrechnung | <img src="icon/Kreditkartenabrechnung.png" width="30"> | Dokumentenart, Von | Rechnungsnummer, Garantie
 <p><br></p>
 
 REGEX functions I am using
