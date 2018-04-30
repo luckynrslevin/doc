@@ -5,17 +5,19 @@ Table of Contents
 =================
 
    * [ecodms Document Management System on Synology NAS](#ecodms-document-management-system-on-synology-nas)
+   * [Table of Contents](#table-of-contents)
       * [Why did I choose ecodms](#why-did-i-choose-ecodms)
       * [Installation](#installation)
       * [My ecodms configuration](#my-ecodms-configuration)
-         * [classification attributes](#classification-attributes)
-         * [document types](#document-types)
+         * [Users](#users)
+         * [Folders](#folders)
+         * [Classification attributes](#classification-attributes)
+         * [Document types](#document-types)
       * [REGEX functions I am using](#regex-functions-i-am-using)
          * [Identify everything after a certain word](#identify-everything-after-a-certain-word)
             * [Example 1: "Kontoauszug Nummer 001 / 2011 vom 01.01.2011 bis 05.01.2011"](#example-1-kontoauszug-nummer-001--2011-vom-01012011-bis-05012011)
             * [Example 2: "Abrechnung:         Januar 2011"](#example-2-abrechnung---------januar-2011)
-      * [create scheduled task for backup](#create-scheduled-task-for-backup)
-
+      * [Create scheduled task for backup](#create-scheduled-task-for-backup)
 
 
 Why did I choose ecodms
@@ -42,6 +44,7 @@ My ecodms configuration
 ### Users
 
 Change the default password of the admin user `ecoSIMSAdmin`.
+
 Change the default password of the user `ecodms`, that also has administration privileges.
 
 To create a user that is able to scan, classify and version documents, see the version history and use the web interface, the following roles are required:
@@ -76,6 +79,7 @@ Anleitung | <img src="icon/Anleitung.png" width="30"> | Dokumentenart, Von | Rec
 Rechnung | <img src="icon/Rechnung.png" width="30"> | Dokumentenart, Von, Rechnungsnummer | 
 Kontoauszug | <img src="icon/Kontoauszug.png" width="30"> | Dokumentenart, Von | Rechnungsnummer, Garantie
 Kreditkartenabrechnung | <img src="icon/Kreditkartenabrechnung.png" width="30"> | Dokumentenart, Von | Rechnungsnummer, Garantie
+Artikel | <img src="icon/News.png" width="30"> | Dokumentenart, Von | Rechnungsnummer, Garantie
 <p><br></p>
 
 REGEX functions I am using
