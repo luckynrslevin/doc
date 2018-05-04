@@ -34,9 +34,32 @@ The key features of ecodms I coudld not find in any other open source or afforda
 
 Installation
 ------------
-Follow the installation instructions for Synology NAS in CHapter 4.4 of the ecodms installation guide:
+Follow the installation instructions for Synology NAS in Chapter 4.4 of the ecodms installation guide:
 https://www.ecodms.de/index.php/de/download/handbuecher/ecodms-version-16-09-eleanor
 <p><br></p>
+
+Docker container configuration for Test and Prod environment
+
+__Volume configuration (Test, Prod)__
+
+File/Folder Test | File/Folder Prod | Mount Point | Type
+------------ | ------------ | ------------- | -------------
+ecodms-backup-test | ecodms-backup | /srv/backup | rw
+ecodms-restore-test | ecodms-restore | /srv/restore | rw
+ecodms-scaninput-test | ecodms-scaninput | /srv/scaninput | rw
+ecodms-data-test | ecodms-data | /srv/data | rw
+<p><br></p>
+
+__Port mapping configuration (Test, Prod)__
+
+Local Port Test | Local Port Prod | Container Point | Type
+------------ | ------------ | ------------- | -------------
+18001 | 17001 | 17001 | TCP
+18002 | 17002 | 17002 | TCP
+18003 | 17004 | 8080 | TCP
+18004 | 17005 | 8180 | TCP
+<p><br></p>
+
 
 My ecodms configuration
 -----------------------
