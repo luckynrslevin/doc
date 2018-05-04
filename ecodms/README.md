@@ -81,6 +81,10 @@ To create a user that is able to scan, classify and version documents, see the v
 ### Folders
 
 I only use one folder named `All` for all documents, since I need no detailed roles and rights concept and I use the classification module to sort and find documents.
+
+Add the following roles in the folder permission section:
+- ecoSIMSUSER
+- scanner
 <p><br></p>
 
 ### Classification attributes
