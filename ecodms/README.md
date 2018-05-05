@@ -69,7 +69,7 @@ My ecodms configuration
 Change the default password of the admin user `ecoSIMSAdmin`.
 
 Change the default password of the user `ecodms`, that also has administration privileges.
-Maybe remove the role `ecoSIMSAdmin` from the `ecodms` user, to revoke admin rights. In this case all administrative work has to be done with the `ecoSIMSAdmin`.
+Maybe remove the role `ecoSIMSAdmin` from the `ecodms` user, to revoke admin rights. In this case all administrative work has to be done with the `ecoSIMSAdmin` user.
 
 <p><br></p>
 
