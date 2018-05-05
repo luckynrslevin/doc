@@ -69,13 +69,8 @@ My ecodms configuration
 Change the default password of the admin user `ecoSIMSAdmin`.
 
 Change the default password of the user `ecodms`, that also has administration privileges.
+Maybe remove the role `ecoSIMSAdmin` from the `ecodms` user, to revoke admin rights. In this case all administrative work has to be done with the `ecoSIMSAdmin`.
 
-To create a user that is able to scan, classify and version documents, see the version history and use the web interface, the following roles are required:
-- ecoSIMSCLASSIFY - archive and classify documents
-- ecoICELogon - use the ecodms inbox
-- ecoSIMSVERSIONING - use the versioning module
-- ecoSIMSHISTORY - view document history
-- ecoSIMSWEBCLIENT - use the web client
 <p><br></p>
 
 ### Folders
