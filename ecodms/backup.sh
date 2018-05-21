@@ -6,6 +6,7 @@
 # You have to set ECODMS_BACKUP_FOLDER environment variable below
 # to match your environment.
 #
+# Version 1.3: Fix error with path name of LATEST_BACKUP_FILE
 # Version 1.2: Delete latest backup if there was no change in the
 #              system (file size), to save space.
 # Version 1.1: Enhanced logic to wait until backup is finished completely,
@@ -15,7 +16,7 @@
 
 DOCKER_SERVICE_ENABLED=2 # 0=disabled 1=enabled 2=unknown/error
 ECODMS_BACKUP_FOLDER="/volume1/ecodms-backup"
-LATEST_BACKUP_FILE=$(ls *.zip | sort -n -t _ -k 2 | tail -1)
+LATEST_BACKUP_FILE=$(ls "$ECODMS_BACKUP_FOLDER"/*.zip | sort -n -t _ -k 2 | tail -1)
 SIZE_OF_LATEST_BACKUP=$(stat --printf="%s" $LATEST_BACKUP_FILE)
 DATE=`date +%Y%m%d`
 BACKUP_FILE_WILDCARD="$ECODMS_BACKUP_FOLDER/DMSbackup$DATE*.zip"
@@ -91,7 +92,8 @@ echo "OK"
 # Check if there were any changes, if not delete the backup from the day
 # before to save space.
 
-SIZE_OF_NEW_BACKUP=$(stat --printf="%s" $BACKUP_FILE)
+SIZE_OF_NEW_BACKUP=$(stat --printf="%s" "$BACKUP_FILE")
+
 if [ "$SIZE_OF_NEW_BACKUP" -eq "$SIZE_OF_LATEST_BACKUP" ]; then
   # remove backup from day before and keep current backup.
   echo -n "Removing backup from day before, since there was no change in the system ..."
