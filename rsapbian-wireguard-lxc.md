@@ -1,5 +1,9 @@
 How to install wireguard on raspbian with lxc container
 =======================================================
+https://linuxcontainers.org/lxd/docs/master/
+https://nixvsevil.com/posts/wireguard-in-proxmox-lxc/
+https://www.wireguard.com/install/
+https://wiki.alpinelinux.org/wiki/Configure_a_Wireguard_interface_(wg)
 
 - Download latest raspbian https://www.raspberrypi.com/software/operating-systems/
 - Flash it to the SD card
@@ -23,6 +27,9 @@ How to install wireguard on raspbian with lxc container
     - <code>sudo usermod -aG lxd yournewuser</code>
     - <code>lxd init</code>
 - configure transparent bridge (see http://www.makikiweb.com/Pi/lxc_on_the_pi.html) ==> setting up an external bridge interface on the Host
-    - sudo apt-get install bridge-utils ifupdown 
+    - sudo apt-get install bridge-utils ifupdown
+    - ...
+
+Create a profile for the external transparent bridge (br0)
  
   
