@@ -1,9 +1,14 @@
 How to install wireguard on raspbian with lxc container
 =======================================================
 https://linuxcontainers.org/lxd/docs/master/
+
 https://nixvsevil.com/posts/wireguard-in-proxmox-lxc/
+
 https://www.wireguard.com/install/
+
 https://wiki.alpinelinux.org/wiki/Configure_a_Wireguard_interface_(wg)
+
+https://ubuntu.com/appliance/lxd/raspberry-pi#windows
 
 - Download latest raspbian https://www.raspberrypi.com/software/operating-systems/
 - Flash it to the SD card
