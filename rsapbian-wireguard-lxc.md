@@ -32,6 +32,7 @@
   * [Install wireguard](#install-wireguard)
   * [Autostart -stop wireguard](#autostart-wireguard-on-boot)
   * [Update alpine daily](#update-alpine-daily)
+- [Install PI Hole on alpine container](#install-pi-hole-on-alpine-container)
 - [Other Links](#other-links)
 
 
@@ -161,6 +162,17 @@
   #!/bin/sh
   apk -U update
   ```
+## Install PI Hole on alpine container
+
+### Create alpine container
+- See [Image server for LXC and LXD](https://images.canonical.com/) to identify the latest version of alpine container available for the arm platform of your pi. At the time I am writing this it is version 3.15.
+- create an alpine container for pi hile `lxc launch -p default -p extbridge images:alpine/3.15 pihole`
+- list containers with `lxc ls`
+- open a shell on the container `lxc exec pihole -- /bin/sh`
+- **❗❗❗ Proceed with all following steps from this shell inside the cntainer ❗❗❗**
+
+## Install PI Hole
+- To install bash and git execute `apk add bash` and `apk add git`
 
 ## Other Links
  
