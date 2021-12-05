@@ -1,13 +1,14 @@
-# Running wireguard in an alpine lxc cntainer on a raspberry pi with automatic security updates
+# Running wireguard and PI Hole in separate alpine lxc cntainers on a raspberry pi
 
 
 
 ```
- +--------------------+
- |  container running |
- |  Alpine and        |
- |  wireguard server  |
- +--------------------+
+ +--------------------+  +--------------------+
+ |  container running |  |  container running |
+ |  Alpine and        |  |  Alpine and        |
+ |  wireguard server  |  |  PI Hole           |
+ |  automatic update  |  |                    |
+ +--------------------+  +--------------------+
  +------------------------------------------------------+
  | Raspbian with                                        |
  |   - automatic securiy updates configured             |
