@@ -20,17 +20,19 @@
 ```
 
 #### Table of Contents  
-- [Running wireguard in an alpine lxc cntainer on a raspberry pi with automatic security updates](#running-wireguard-in-an-alpine-lxc-cntainer-on-a-raspberry-pi-with-automatic-security-updates)
-  * [Raspbian installation and configration](#raspbian-installation-and-configration)
-    + [Raspbian os installation](#raspbian-os-installation)
-    + [Raspbian load wireguard kernel modules](#raspbian-load-wireguard-kernel-modules)
-    + [Raspbian unattended updates](#raspbian-unattended-updates)
-    + [Raspbian lxclxd installation](#raspbian-lxclxd-installation)
-    + [Raspbian network bridge configuration](#raspbian-network-bridge-configuration)
-  * [Alpine container installation and configuration](#alpine-container-installation-and-configuration)
-- [Other Links](#other-links)
 
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+- [Raspbian installation and configration](#raspbian-installation-and-configration)
+  * [Raspbian os installation](#raspbian-os-installation)
+  * [Raspbian load wireguard kernel modules](#raspbian-load-wireguard-kernel-modules)
+  * [Raspbian unattended updates](#raspbian-unattended-updates)
+  * [Raspbian lxclxd installation](#raspbian-lxclxd-installation)
+  * [Raspbian network bridge configuration](#raspbian-network-bridge-configuration)
+- [Wireguard container installation and configuration](#wireguard-container-installation-and-configuration)
+  * [Create alpine container](#create-alpine-container)
+  * [Install wireguard](#install-wireguard)
+  * [Autostart -stop wireguard](#autostart-wireguard-on-boot)
+  * [Update alpine daily](#update-alpine-daily)
+- [Other Links](#other-links)
 
 
 ## Raspbian installation and configration
@@ -38,80 +40,135 @@
 ### Raspbian os installation
 - Download latest raspbian https://www.raspberrypi.com/software/operating-systems/
 - Flash it to the SD card
-- Enable ssh by writing a file named <code>ssh</code> on the SD card (do not use .ssh)
+- Enable ssh by writing a file named `ssh` on the SD card (do not use .ssh)
 - Put SD card in your pi and power on
-- login via ssh with default <code>user:pi pw:raspberry</code>
-- Change hostname according to your needs <code>sudo raspi-config</code>
-- Add a new user <code>sudo adduser yournewuser</code>
-- Add the new user to sudo group <code>sudo usermod -aG sudo yournewuser</code>
-- reboot pi <code>sudo reboot</code>
-- login with your new user <code>ssh yournewuser@yourhostname</code>
-- Try if sudo works with your new use e.g. <code>sudo apt-get update</code>
-- Remove default pi user <code>sudo deluser -remove-home pi</code>
+- login via ssh with default `user:pi pw:raspberry`
+- Change hostname according to your needs `sudo raspi-config`
+- Add a new user `sudo adduser yournewuser`
+- Add the new user to sudo group `sudo usermod -aG sudo yournewuser`
+- reboot pi `sudo reboot`
+- login with your new user `ssh yournewuser@yourhostname`
+- Try if sudo works with your new use e.g. `sudo apt-get update`
+- Remove default pi user `sudo deluser -remove-home pi`
 - to avoid yournewuser has to always type the password for sudo do:
-    - <code>sudo chmod 640 /ets/sudoers.d/010_yournewuser-nopasswd</code>
-    - replace <code>pi</code> with <code>yournewusername</code> in the file <code>/ets/sudoers.d/010_yournewuser-nopasswd</code>
-    - <code>sudo chmod 440 /ets/sudoers.d/010_yournewuser-nopasswd</code>
+    - `sudo chmod 640 /ets/sudoers.d/010_yournewuser-nopasswd`
+    - replace `pi` with `yournewusername` in the file `/ets/sudoers.d/010_yournewuser-nopasswd`
+    - `sudo chmod 440 /ets/sudoers.d/010_yournewuser-nopasswd`
 
 ### Raspbian load wireguard kernel modules
-- To automatically load wireguard module during boot add one line with <code>wireguard</code> to <code>/etc/modules-load.d/modules.conf</code>. This is required, since all lxc containers use kernel and kernel modules from the host.
+- To automatically load wireguard module during boot add one line with `wireguard` to `/etc/modules-load.d/modules.conf`. This is required, since all lxc containers use kernel and kernel modules from the host.
 
 ### Raspbian unattended updates
-- Install unattended updates (upgrades) <code>sudo apt-get install unattended-upgrades && sudo apt install apt-listchanges</code>
-- Change the following configuration parameters in <code>/etc/apt/apt.conf.d/50unattended-upgrades</code>
+- Install unattended updates (upgrades) `sudo apt-get install unattended-upgrades && sudo apt install apt-listchanges`
+- Change the following configuration parameters in `/etc/apt/apt.conf.d/50unattended-upgrades`
     - Change debian upgrade configuration to raspbian update configuration
     ```
     //"origin=Debian,codename=${distro_codename},label=Debian";
     //"origin=Debian,codename=${distro_codename},label=Debian-Security";
     //"origin=Debian,codename=${distro_codename}-security,label=Debian-Security";
     "origin=Raspbian,codename=${distro_codename},label=Raspbian";
-     "origin=Raspberry Pi Foundation,codename=${distro_codename},label=Raspberry Pi Foundation";
-     ```
+    "origin=Raspberry Pi Foundation,codename=${distro_codename},label=Raspberry Pi Foundation";
+    ```
     - Enable autotic reboot
-     ```
-     Unattended-Upgrade::Automatic-Reboot "true";
+    ```
+    Unattended-Upgrade::Automatic-Reboot "true";
     ```
     - If you want cange reboot time to a cnvenient time
     ```
     Unattended-Upgrade::Automatic-Reboot-Time "02:00";
-     ```
-- Change the following configuration parameters in <code>/etc/apt/apt.conf.d/50unattended-upgrades</code>
+    ```
+- Change the following configuration parameters in `/etc/apt/apt.conf.d/50unattended-upgrades`
     Add the following two lines to the configuration file (keep the exiisting ones!
     ```
     APT::Periodic::Download-Upgradeable-Packages "1"; 
     APT::Periodic::AutocleanInterval "7";
     ```
-- Do a dryrun to see if it works <code>sudo unattended-upgrades --dry-run --debug</code>
+- Do a dryrun to see if it works `sudo unattended-upgrades --dry-run --debug`
 
 ### Raspbian lxclxd installation
 -  Install lxc/lxd:
-    - <code>sudo apt-get install snapd  bridge-utils</code>
-    - <code>sudo snap install core lxd</code>
-    - <code>sudo usermod -aG lxd yournewuser</code>
-    - <code>lxd init</code>
+    - `sudo apt-get install snapd  bridge-utils`
+    - `sudo snap install core lxd`
+    - `sudo usermod -aG lxd yournewuser`
+    - `lxd init` => Answer all questions with default proposal.
 
 ### Raspbian network bridge configuration
 - configure transparent bridge (see http://www.makikiweb.com/Pi/lxc_on_the_pi.html) ==> setting up an external bridge interface on the Host
     - sudo apt-get install bridge-utils ifupdown
-    - ...
+    - Create the file `/etc/network/interfaces.d/br0` with the following content:
+      ```
+      iface br0 inet dhcp
+      bridge_ports eth0
+      bridge_stp off
+      bridge_fd 0
+      bridge_maxwait 0
+      iface br0 inet6 dhcp
+      ```
+    - Create the file `/e/ystemd/network/br0.network` with the following content
+      ```
+      [Match]
+      Name=br0
+      
+      [Network]
+      DHCP=yes
+      ```
+    - To enable bridge after reboot add the folloing to `/etcrc.local`:
+      ```
+      # fix for br0 interface
+      /sbin/ifup br0
+      # kick networkd as well
+      /bin/systemctl restart systemd-networkd
+      echo "Bridge is up"
+      ```
+    - Make it executable `sudo chmod 754 /etc/rc.local`
+    - Check if evrything worked properly with `ip addr` command and verify output
 
-Create a profile for the external transparent bridge (br0)
+## Wireguard container installation and configuration
+### Create alpine container
+- See [Image server for LXC and LXD](https://images.canonical.com/) to identify the latest version of alpine container available for the arm platform of your pi. At the time I am writing this it is version 3.15.
+- create an alpine container for wireguard `lxc launch -p default -p extbridge images:alpine/3.15 wg`
+- list containers with `lxc ls`
+- open a shell on the container `lxc exec wg -- /bin/sh`
+- **❗❗❗ Proceed with all following steps from this shell inside the cntainer ❗❗❗**
 
+### Install wireguard
+- `apk add wireguard-tools`
 
-## Alpine container installation and configuration
+### Autostart wireguard on boot
+- Create an init script `/etc/init.d/wg` with the following content:
+  ```
+  #!/sbin/openrc-run
+  name="wg"
+  
+  depend() {
+  	need net
+  }
+  
+  start() {
+      wg-quick up wg0 
+  }
+  
+  stop() {
+      wg-quick down wg0 
+  }
+  ```
+- Test if it works properly with `rc-sevice wg start` and `rc-sevice wg stop`
+- Add it to the default runlevel `rc-update add wg default`
 
-dsatfasdfasdf
+### Update alpine daily
+- Create the file `/etc/periodic/daily/apkupdate` with the following content:
+  ```
+  #!/bin/sh
+  apk -U update
+  ```
 
-# Other Links
+## Other Links
  
-https://linuxcontainers.org/lxd/docs/master/
-
-https://nixvsevil.com/posts/wireguard-in-proxmox-lxc/
-
-https://www.wireguard.com/install/
-
-https://wiki.alpinelinux.org/wiki/Configure_a_Wireguard_interface_(wg)
-
-https://ubuntu.com/appliance/lxd/raspberry-pi#windows
+- https://linuxcontainers.org/lxd/docs/master/
+- http://www.makikiweb.com/Pi/lxc_on_the_pi.html
+- https://nixvsevil.com/posts/wireguard-in-proxmox-lxc/
+- https://www.wireguard.com/install/
+- https://wiki.alpinelinux.org/wiki/Configure_a_Wireguard_interface_(wg)
+- https://ubuntu.com/appliance/lxd/raspberry-pi#windows
 
 
