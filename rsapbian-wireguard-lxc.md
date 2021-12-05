@@ -21,8 +21,6 @@
 
 #### Table of Contents  
 - [Running wireguard in an alpine lxc cntainer on a raspberry pi with automatic security updates](#running-wireguard-in-an-alpine-lxc-cntainer-on-a-raspberry-pi-with-automatic-security-updates)
-      - [Table of Contents](#table-of-contents)
-  * [Test](#test)
   * [Raspbian installation and configration](#raspbian-installation-and-configration)
     + [Raspbian os installation](#raspbian-os-installation)
     + [Raspbian load wireguard kernel modules](#raspbian-load-wireguard-kernel-modules)
@@ -34,9 +32,6 @@
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
-
-
-## Test
 
 ## Raspbian installation and configration
 
