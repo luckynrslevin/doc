@@ -1,5 +1,4 @@
-# Running wireguard and PI Hole in separate alpine lxc cntainers on a raspberry pi
-
+# Running wireguard and pi hole in separate lxc cntainers on a raspberry pi
 
 
 ```
