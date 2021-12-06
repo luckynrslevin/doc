@@ -3,12 +3,12 @@
 
 
 ```
- +--------------------+  +--------------------+
- |  container running |  |  container running |
- |  Alpine and        |  |  Alpine and        |
- |  wireguard server  |  |  PI Hole           |
- |  automatic update  |  |                    |
- +--------------------+  +--------------------+
+ +---------------------+  +------------------------+
+ |  container running  |  |  container running     |
+ |  alpine +           |  |  debian incl.          |
+ |  wireguard server + |  |  automatic updates     |
+ |  automatic update   |  |  + pi hole (man updt.) |
+ +---------------------+  +------------------------+
  +------------------------------------------------------+
  | Raspbian with                                        |
  |   - automatic securiy updates configured             |
@@ -127,7 +127,7 @@
 
 ## Wireguard container installation and configuration
 ### Create alpine container
-- See [Image server for LXC and LXD](https://images.canonical.com/) to identify the latest version of alpine container available for the arm platform of your pi. At the time I am writing this it is version 3.15.
+- See [Image server for LXC and LXD](https://us.lxd.images.canonical.com/) to identify the latest version of alpine container available for the arm platform of your pi. At the time I am writing this it is version 3.15.
 - create an alpine container for wireguard `lxc launch -p default -p extbridge images:alpine/3.15 wg`
 - list containers with `lxc ls`
 - open a shell on the container `lxc exec wg -- /bin/sh`
@@ -163,17 +163,35 @@
   #!/bin/sh
   apk -U update
   ```
-## Install PI Hole on alpine container
+ - **❗❗❗ Now you are finished with the wireguard installation and can exit the container ❗❗❗** 
+  
+## Install PI Hole on debian container
 
 ### Create alpine container
-- See [Image server for LXC and LXD](https://images.canonical.com/) to identify the latest version of alpine container available for the arm platform of your pi. At the time I am writing this it is version 3.15.
-- create an alpine container for pi hile `lxc launch -p default -p extbridge images:alpine/3.15 pihole`
+- See [Image server for LXC and LXD](https://images.canonical.com/) to identify the latest version of debian arm container available for the arm platform of your pi. At the time I am writing this it is version buster.
+- create an alpine container for pi hile `lxc launch -p default -p extbridge images:debian/buster pihole`
 - list containers with `lxc ls`
 - open a shell on the container `lxc exec pihole -- /bin/sh`
 - **❗❗❗ Proceed with all following steps from this shell inside the cntainer ❗❗❗**
 
-## Install PI Hole
-- To install bash and git execute `apk add bash` and `apk add git`
+## Install pi hole
+- To update all packages and install curl `sudo apt update && sudo apt upgrade && sudo apt install curl`
+- To install pi hole `curl -sSL https://install.pi-hole.net | bash`
+
+## Activate debian unattended security updates
+- Install unattended updates (upgrades) `sudo apt-get install unattended-upgrades && sudo apt install apt-listchanges`
+- Change the following configuration parameters in `/etc/apt/apt.conf.d/50unattended-upgrades`
+  - Enable autotic reboot
+    ```
+    Unattended-Upgrade::Automatic-Reboot "true";
+    ```
+  - If you want cange reboot time to a cnvenient time
+    ```
+    Unattended-Upgrade::Automatic-Reboot-Time "02:00";
+    ```
+- Do a dryrun to see if it works `sudo unattended-upgrades --dry-run --debug`
+- **❗❗❗ Now you are finished with the pi hole installation and can exit the container ❗❗❗**
+
 
 ## Other Links
  
