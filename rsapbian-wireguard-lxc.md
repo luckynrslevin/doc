@@ -40,7 +40,7 @@
 ## Raspbian installation and configration
 
 ### Raspbian os installation
-- Download latest raspbian https://www.raspberrypi.com/software/operating-systems/
+- Download latest Raspberry PI os https://www.raspberrypi.com/software/operating-systems/
 - Flash it to the SD card
 - Enable ssh by writing a file named `ssh` on the SD card (do not use .ssh)
 - Put SD card in your pi and power on
