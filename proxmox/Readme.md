@@ -29,7 +29,8 @@ I assume not officially supported. However in my case this was needed to properl
 - install build-essential and pkg-config `apt install build-essential pkg-config`
 
 ## Install NVidia driver
-__:hammer: TODO__ Since the Proxmox server has no X server, I think we need to tweak the environment variables accordingly before installing the dirver.
+:exclamation: :hammer: __TODO: Since the Proxmox server has no X server, I think we need to tweak the environment variables accordingly before installing the dirver.__
+
 see: https://github.com/NVIDIA/nvidia-container-runtime#nvidia_driver_capabilities
 
 - Blacklist nouvea open source nvidia driver to avoid it gets loaded during boot.
