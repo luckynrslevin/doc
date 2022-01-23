@@ -1,6 +1,7 @@
 # Goal: Install Proxmox 7.1 server to run Linux lxc containers including Nvidia GPU support.
+I found various tutorials on this topic, but nothing that worked 1:1 for me, especially with Proxmox Version 7.1. Therefore I created this howto.
 
-## WARNING
+## WARNING :exclamation:
 1. __THE INSTALLATION OF PROXMOX WILL WIPE YOUR DISK AND ALL DATA ON IT__
 2. __DO NOT JUST EXECUTE THE CODE BLOCKS BELOW, MAKE SURE TO DOUBLE CHECK WITH YOUR SYSTEM__
 
@@ -28,6 +29,9 @@ I assume not officially supported. However in my case this was needed to properl
 - install build-essential and pkg-config `apt install build-essential pkg-config`
 
 ## Install NVidia driver
+__:hammer: TODO__ Since the Proxmox server has no X server, I think we need to tweak the environment variables accordingly before installing the dirver.
+see: https://github.com/NVIDIA/nvidia-container-runtime#nvidia_driver_capabilities
+
 - Blacklist nouvea open source nvidia driver to avoid it gets loaded during boot.
 ```
 cat << EOF > /etc/modprobe.d/blacklist-nouveau.conf
@@ -104,4 +108,16 @@ cd /var/lib/vz/template/cache
 wget https://us.lxd.images.canonical.com/images/debian/bullseye/amd64/default/20220122_05:25/rootfs.tar.xz -O debian-11-bullseye.tar.xz
 ```
 - Afterwards the container image is available in the Proxmox web interface as a template for creating new containers.
+
+# Create Debian 11 bullseye container, Install NVidia Drivers and activate GPU passthrough
+- Create a new container in Proxmox based on the debian bullseye tempalte. See youtube course above.
+- Login to the container and update `apt update && apt dist-upgrade`
+- Install wget `apt install wget`
+- download the invidia driver to the conatiner (__NEED TO BE EXACT SAME VERSION AS INSTALLED ON THE HOST__)
+- In my case I do `wget https://us.download.nvidia.com/XFree86/Linux-x86_64/470.94/NVIDIA-Linux-x86_64-470.94.run`
+- Make executable `chmod 755 NVIDIA-Linux-x86_64-470.94.run`
+- Install NVidia driver in the container without the modules `./NVIDIA-Linux-x86_64-470.94.run --no-kernel-module`
+- Shutdown the container ´shutdown -P now`
+- Now change the configuration of the container on the Proxmox server as described [in this tutorial (section lxc container)](https://passbe.com/2020/02/19/gpu-nvidia-passthrough-on-proxmox-lxc-container/)
+- Restart the container and verify if the passthrough works properly (see same tutorial)
 - 
