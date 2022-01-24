@@ -121,4 +121,9 @@ wget https://us.lxd.images.canonical.com/images/debian/bullseye/amd64/default/20
 - Shutdown the container ´shutdown -P now`
 - Now change the configuration of the container on the Proxmox server as described [in this tutorial (section lxc container)](https://passbe.com/2020/02/19/gpu-nvidia-passthrough-on-proxmox-lxc-container/)
 - Restart the container and verify if the passthrough works properly (see same tutorial)
-- 
+
+
+# Enable powersaving on your proxmox server (optional)
+
+see https://squander.money/posts/save-energy-bill-when-running-proxmox-server/
+
