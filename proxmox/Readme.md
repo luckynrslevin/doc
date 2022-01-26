@@ -118,7 +118,7 @@ wget https://us.lxd.images.canonical.com/images/debian/bullseye/amd64/default/20
 - In my case I do `wget https://us.download.nvidia.com/XFree86/Linux-x86_64/470.94/NVIDIA-Linux-x86_64-470.94.run`
 - Make executable `chmod 755 NVIDIA-Linux-x86_64-470.94.run`
 - Install NVidia driver in the container without the modules `./NVIDIA-Linux-x86_64-470.94.run --no-kernel-module`
-- Shutdown the container ´shutdown -P now`
+- Shutdown the container `shutdown -P now`
 - Now change the configuration of the container on the Proxmox server as described [in this tutorial (section lxc container)](https://passbe.com/2020/02/19/gpu-nvidia-passthrough-on-proxmox-lxc-container/)
 - Restart the container and verify if the passthrough works properly (see same tutorial)
 
