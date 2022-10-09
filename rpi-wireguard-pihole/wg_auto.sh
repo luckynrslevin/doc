@@ -9,7 +9,7 @@
 # 0) MacOS and zsh
 # 1) You need to have a up and running wireguard server in your home network
 #    See e.g. following tutorial:
-#    https://github.com/luckynrslevin/doc/blob/master/rsapbian-wireguard-pihole-on-lxc.md
+#    https://github.com/luckynrslevin/doc/tree/master/rpi-wireguard-pihole#readme
 # 2) wiregurd command line tools need to be available on your
 #    mac computer (client)
 # 3) You need to properly configure your personal subnet address for your
