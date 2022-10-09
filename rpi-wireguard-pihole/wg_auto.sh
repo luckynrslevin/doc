@@ -4,7 +4,7 @@
 # in case you are outside of your home network
 # Maintainer: github.com/luckynrslevin
 # Date: 2022/09/10
-# Version: 0.1
+# Version: 1.0
 # Prerequisites:
 # 0) MacOS and zsh
 # 1) You need to have a up and running wireguard server in your home network
@@ -41,7 +41,7 @@ WireguardUp () {
   fi
 }
 
-# Stort wireguard in case it is running and exit the script
+# Stop wireguard in case it is running and exit the script
 WireguardDown () {
   if [[ $WG_CONNECTED -gt 0 ]]; then
     #echo "Stop wireguard"
