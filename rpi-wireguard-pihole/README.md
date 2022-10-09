@@ -32,7 +32,9 @@
   * [Install wireguard](#install-wireguard)
   * [Autostart -stop wireguard](#autostart-wireguard-on-boot)
   * [Update alpine daily](#update-alpine-daily)
+- [MacOS Script to automatically connect and disconnect to wireguard](#[macos-script-to-automatically-connect-and-disconnect-to-wireguard)
 - [Install PI Hole on alpine container](#install-pi-hole-on-alpine-container)
+
 - [Other Links](#other-links)
 
 
@@ -163,6 +165,18 @@
   apk -U update
   ```
  - **❗❗❗ Now you are finished with the wireguard installation and can exit the container ❗❗❗** 
+ 
+ 
+## MacOS Script to automatically connect and disconnect to wireguard
+If you use a MacOS computer to connect to the wireguard server, you can use the [following script](wg_auto.sh) to automate connecting and disconnecting to wireguard based on your current network connection. The script will disable the wireguard connection within your home network and enable wireguard in any other network.
+
+You can use crontab to run this automatically every 5 seconds:
+`crontab -e`
+```
+# autostart/-stop wireguard
+* * * * *     /foo/bar/bin/autostartwg.sh
+ ```
+
   
 ## Install PI Hole on debian container
 
@@ -190,6 +204,8 @@
     ```
 - Do a dryrun to see if it works `sudo unattended-upgrades --dry-run --debug`
 - **❗❗❗ Now you are finished with the pi hole installation and can exit the container ❗❗❗**
+
+## 
 
 
 ## Other Links
