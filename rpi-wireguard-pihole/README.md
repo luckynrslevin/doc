@@ -32,7 +32,7 @@
   * [Install wireguard](#install-wireguard)
   * [Autostart -stop wireguard](#autostart-wireguard-on-boot)
   * [Update alpine daily](#update-alpine-daily)
-- [MacOS Script to automatically connect and disconnect to wireguard](#[macos-script-to-automatically-connect-and-disconnect-to-wireguard)
+- [MacOS Script to automatically connect and disconnect to wireguard](#macos-script-to-automatically-connect-and-disconnect-to-wireguard)
 - [Install PI Hole on alpine container](#install-pi-hole-on-alpine-container)
 
 - [Other Links](#other-links)
@@ -178,7 +178,7 @@ You can use crontab to run this automatically every 5 seconds:
  ```
 
   
-## Install PI Hole on debian container
+## Install PI Hole on alpine container
 
 ### Create alpine container
 - See [Image server for LXC and LXD](https://images.canonical.com/) to identify the latest version of debian arm container available for the arm platform of your pi. At the time I am writing this it is version buster.
