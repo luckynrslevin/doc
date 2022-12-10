@@ -4,9 +4,9 @@
 ```
  +---------------------+  +------------------------+
  |  container running  |  |  container running     |
- |  alpine +           |  |  debian incl.          |
- |  wireguard server + |  |  automatic updates     |
- |  automatic update   |  |  + pi hole (man updt.) |
+ |  alpine +           |  |  debian + pihole       |
+ |  wireguard server + |  |  including automatic   |
+ |  automatic update   |  |  os & pihole update    |
  +---------------------+  +------------------------+
  +------------------------------------------------------+
  | Raspbian with                                        |
