@@ -33,7 +33,7 @@
   * [Autostart -stop wireguard](#autostart-wireguard-on-boot)
   * [Update alpine daily](#update-alpine-daily)
 - [MacOS Script to automatically connect and disconnect to wireguard](#macos-script-to-automatically-connect-and-disconnect-to-wireguard)
-- [Install PI Hole on alpine container](#install-pi-hole-on-alpine-container)
+- [Install PI Hole on debian container](#install-pi-hole-on-debian-container)
 
 - [Other Links](#other-links)
 
@@ -178,9 +178,9 @@ You can use crontab to run this automatically every 5 seconds:
  ```
 
   
-## Install PI Hole on alpine container
+## Install PI Hole on debian container
 
-### Create alpine container
+### Create debian container
 - See [Image server for LXC and LXD](https://images.canonical.com/) to identify the latest version of debian arm container available for the arm platform of your pi. At the time I am writing this it is version buster.
 - create an alpine container for pi hile `lxc launch -p default -p extbridge images:debian/buster pihole`
 - list containers with `lxc ls`
@@ -190,6 +190,12 @@ You can use crontab to run this automatically every 5 seconds:
 ## Install pi hole
 - To update all packages and install curl `sudo apt update && sudo apt upgrade && sudo apt install curl`
 - To install pi hole `curl -sSL https://install.pi-hole.net | bash`
+- To automatically update pi hole every day at 3 a.m. add update command to cron
+  `crontab -e` 
+  add the following line
+  `0 3 * * * pihole -up`
+  Reload cron configuration
+  `service cron reload`
 
 ## Activate debian unattended security updates
 - Install unattended updates (upgrades) `sudo apt-get install unattended-upgrades && sudo apt install apt-listchanges`
