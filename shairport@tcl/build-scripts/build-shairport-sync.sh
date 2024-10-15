@@ -232,7 +232,7 @@ Author:         Mike Brady
 Original-site:  https://github.com/mikebrady/shairport-sync
 Copying-policy: accompanied
 Size:           136 kB
-Extension_by:   diese
+Extension_by:   luckynrslevin
 Tags:           audio airplay shairport
 Comments:       Shairport Sync is an AirPlay audio player for Linux,
                 FreeBSD and OpenBSD. It plays audio streamed from Apple devices
