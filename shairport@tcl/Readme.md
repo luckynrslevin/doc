@@ -105,10 +105,42 @@ To persist the files simply do a backup by issuing the following command:
 filetool.sh -b
 ```
 
+### Build libconfig
+Download the buildscript from this repo, make it executable and run it.
+```
+wget https://raw.githubusercontent.com/luckynrslevin/doc/refs/heads/master/shairport%40tcl/build-scripts/build-libconfig.sh
+chmod 755 build-libconfig.sh
+./build-libconfig.sh
+```
 
+Copy the resulting package libconfig.tcz to /mnt/mmcblk0p2/tce/optional and add it to load it during boot
+```
+cp /tmp/libconfig/libconfig.tcz /mnt/mmcblk0p2/tce/optional
+echo libconfig.tcz >> /etc/sysconfig/tcedir/onboot.lst
+filetool.sh -b
+```
 
+Reboot your system:
+```
+sudo reboot
+```
 
+### Build shairport-sync
+Download the buildscript from this repo, make it executable and run it.
+```
+wget https://raw.githubusercontent.com/luckynrslevin/doc/refs/heads/master/shairport%40tcl/build-scripts/build-shairport-sync.sh
+chmod 755 build-shairport-sync.sh
+./build-shairport-sync.sh
+```
 
+Copy the resulting package libconfig.tcz to /mnt/mmcblk0p2/tce/optional and add it to load it during boot
+```
+cp /tmp/libconfig/shairport-sync.tcz /mnt/mmcblk0p2/tce/optional
+echo shairport-sync.tcz >> /etc/sysconfig/tcedir/onboot.lst
+filetool.sh -b
+```
 
-
-
+Reboot your system:
+```
+sudo reboot
+```
