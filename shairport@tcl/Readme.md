@@ -11,10 +11,10 @@ For me there are mainly two reasons:
 
 ## What do I need?
 
-- An 64bit capable RPI, I use RPI3
+- A RPI, I use RPI3. Not sure if performance of earlier versions will be sufficient to run shairport-sync.
 - SDCard
 - LAN cable to connect to your network
-- Sufficient power supply (best use original RPI power supplys to make sure not to face low voltage situations)
+- Good power supply (best use original RPI power supplys to make sure not to face low voltage situations)
 - An Audio DAC supported by the Linux kernel, in my case I use a HifiBerry DAC. You could use the standard audio output of the RPI.
 - An Audio cable to connect to your stereo (chinch <-> chinch, or 3,5 mm jack <-> chinch, or whatever meets your setup)
 - Some Linux know how (familiar with command line, editing files, ...)
